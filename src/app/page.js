@@ -36,6 +36,7 @@ export default function Home() {
   };
 
   const loadMyCourses = async () => {
+    setLoadingMyCourses(true);
     const resp = await axios.get("/api/enrollment", {
       headers: { Authorization: `Bearer ${token}` },
     });
