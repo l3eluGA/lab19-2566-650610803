@@ -56,6 +56,7 @@ export default function Home() {
 
   const login = async () => {
     try {
+      setLoadingLogin(true);
       const resp = await axios.post("/api/user/login", { username, password });
       setToken(resp.data.token);
       setAuthenUsername(resp.data.username);
@@ -110,7 +111,7 @@ export default function Home() {
                 value={password}
               />
               {!loadingLogin && <Button onClick={login}>Login</Button>}
-              {loadingLogin &&(<Button onClick={login}>Login</Button>)}
+              {loadingLogin &&(<Button onClick={login} disanled>Login</Button>)}
             </Group>
           )}
           {authenUsername && (
@@ -139,7 +140,6 @@ export default function Home() {
 
           {/* Do something with below loader!! */}
           {loadingMyCourses && <Loader variant="dots" />}
-          <Loader variant="dots" />
         </Paper>
         <Footer year="2023" fullName="Rungthip Phongsupasa" studentId="650610803" />
       </Stack>
